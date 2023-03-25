@@ -6,6 +6,7 @@ public class DefaultConstructor {
 	{
 		System.out.print("Default Constructor");
 	}
+	//hello
 	
 	// private constructor
 	
