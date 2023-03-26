@@ -1,2 +1,7 @@
 1. static variable to store common values of all instances of this object.
 2. non static variable to store instance specific values of each object.
+3. object relations
+   is a relation (inheritnace)
+   has a relation(composition)
+   used a relations(aggregation)
+
