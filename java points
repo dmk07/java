@@ -1,0 +1,2 @@
+1. static variable to store common values of all instances of this object.
+2. non static variable to store instance specific values of each object.
