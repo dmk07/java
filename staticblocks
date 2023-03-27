@@ -1,0 +1,182 @@
+In this article, we are going to discuss the static block in java in details. Let us look at the topics we will learn about the static block in Java:
+
+What is Static Block in Java and how is it called
+How is a Static block executed in Java
+Reason static block is executed before the main method in Java.
+How many times a dot class file is loaded into the memory?
+The order of execution of multiple static blocks in java.
+Can static be executed without a main method inside a class?
+Uses of Static block in Java
+Difference between the static block and instance block in Java
+The overall article will meet the above defined scope. So let us get started.
+
+Introduction to Static Block in Java
+Suppose there are some fields in your code, which are needed to be initialized and executed at the very beginning of the code only once, and you do not want to initialize them every time. In that case, we can use a static block in java, which can contain those fields and will execute them only once at the very beginning when the class is loaded into the memory. Having learned the main purpose of the static block, now let us formally define what is a static block in java and its deep significance in our code.
+
+Whenever there is a block that is associated with the static keyword, we refer to that block as a static block (also called static clause) in java. Now what is the static keyword?
+
+Let us see --
+
+The static keyword is a non-access modifier in Java. It makes a member (variables or methods) of a class independent of the objects of the class and is used when we are defining properties that are common to all objects in the class. Only one copy of the static member exists regardless of the number of instances of the class. A static keyword can be used with variables, methods, blocks, and nested classes.
+
+The set of codes inside a static block can run only once when the class is loaded into the memory, by loading of class into memory we mean that, when the Java ClassLoader which is a part of Java Runtime Environment dynamically loads the Java classes into the Java Virtual Machine (JVM).
+
+We can say static block can be used for static initialization of a class, this is because it is an option for initializing or setting up the class during run-time and also the code inside the static block is executed only once: the first time when the class is loaded into memory. So a static block is also known as static initialization block.
+
+A static block is executed before the main method during the classloading.
+
+Let us see an example of how to declare a static block in Java.
+
+// Java program to demonstrate static block
+public class Main {
+    static {
+      //static block
+      System.out.println("Hi, I'm a Static Block!");
+      }
+    
+    public static void main(String[] args) {
+        //main method
+        System.out.println("Hi, I'm a Main Method!");
+    }
+}
+Output
+
+Hi, I'm a Static Block!
+Hi, I'm a Main Method!
+Explanation
+
+So in the above code, we have created a public class Main, and inside it we have created a static block. The static block is automatically executed during the loading of class, At first, the class is loaded into the memory, that is, JVM loads the dot class file (in byte code) into the memory. During the dot class file loading into memory, the static block is been executed and it will print its content.
+
+Note : In the above code, there is no main() method, so this code will only work for a JDK version 1.5 or previous. In the latest version, it will throw an error.
+
+Calling of Static Block in Java
+Now, let us discuss how we can call the static block in java. There is no specific way to call a static block in java, as it is executed automatically when the class is loaded in the memory.
+
+To clarify the above point, let us take an example to see how the static block in java is called automatically.
+
+// Java program to demonstrate the calling of
+// Static block in java
+import java.util.*;
+public class MyClass {
+    
+    // Static variable
+    private static List<String> list;
+    
+    // Constructor of this class
+    MyClass(){
+        list.add("five");
+        list.add("six");
+    }
+    
+    // Method of this class
+    public void printList(){
+        System.out.println(list);
+    }
+    
+    //static block
+    static {
+       list = new ArrayList<String>();
+        list.add("one");
+        list.add("two");
+        list.add("three");
+        list.add("four");
+      }
+      
+    //main method
+    public static void main(String[] args){
+        
+        // Calling of constructor inside main()
+        MyClass obj = new MyClass();
+        
+        // Calling of method inside main()
+        obj.printList();
+        
+        // Calling of the static block
+        // Nothing to do here as it is called
+        // automatically as class is loaded in memory
+        
+    }
+}
+Output
+
+[one, two, three, four, five, six]
+Explanation
+
+In the above code, we have a public class Myclass which includes a constructor, method, and a static block. In the main method, we can see that, except for the static block we are calling the constructor, method of that class, but after the execution of the class, we can see the elements : "one", "two, "three", "four", in the list is been added inside the static block, which is before the elements "five", "six" in the list which is been added inside the constructor. This happens, even though we have not called the static block inside the main() method. And, you can also see that the content of the static block is executed before the constructor.
+
+Hence, we may clearly conclude that, we don't need to call the static block manually, rather it is executed automatically at the very beginning whenever the class is loaded in the memory.
+
+Execution of Static Block in Java
+The static block is executed only once by the Java virtual machine (JVM) when the class is loaded into the memory by Java ClassLoader. Usually, in JDK version 1.5 or previous, the static block can be executed successfully without the main() method, this is because the static block is executed before a valid main() method is searched for, so if you exit the program at the end of the static block, you will receive no errors. However, in case of JDK version after 1.6 it will throw an error if there is no main() method inside our code. As in JDK version after 1.6, after loading the class the JVM will check for the main method before loading static content.
+
+During the time of class loading, even before the main method is loaded, the JVM executes the static block.
+
+Hence, let us take an example to see of the execution of a static block in java.
+
+Code
+
+// Java program to demonstrate the execution of
+// Static block in java
+public class Main {
+    static {
+      //static block
+      System.out.println("Hi, I'm a Static Block!");
+      }
+    public static void main(String[] args){
+        //main method
+        System.out.println("Hi, I'm a Main Method!");
+    }
+}
+Output
+
+Hi, I'm a Static Block!
+Hi, I'm a Main Method!
+Explanation
+
+So in the above code, we have a public class Main which includes a static block and a main method. Usually in JDK version 1.5 or previous we can execute the code successfully and print the content inside a static keyword without creating any main() method, but JDK version after 1.5 will throw an error if there is no main() method. So in the latest versions, JVM first looks for the main method and then, starts executing the program including the static block.
+
+Static blocks can also be executed before constructors. Let us see another example of how the static block will execute if the code contains constructors.
+
+Code :
+
+/// Java program to demonstrate the execution of
+// Static block before constructors in java
+
+// Class 1
+// Helper class
+class Helper {
+
+	// Static blocks
+	static{
+	    System.out.println("Hi, I'm a Static Block!");
+	}
+
+	// Constructor of the class
+	Helper(){
+	    System.out.println("Hi, I'm a Constructor!"); 
+	}
+}
+
+// Class 2
+// public class
+public class MyClass{
+
+	// Main method
+	public static void main(String args[])
+	{
+
+		// Although we have two objects, static block is
+		// executed only once.
+		Helper t1 = new Helper();
+		Helper t2 = new Helper();
+	}
+}
+Output
+
+Hi, I'm a Static Block!
+Hi, I'm a Constructor!
+Hi, I'm a Constructor!
+Explanation
+
+In the above code, we have a public class MyClass and another class Helper. When the code is been executed we can see the static block content is printed before the constructor of the Helper class content. By this, we got a clear idea that static blocks can also be executed before constructors. We have also noticed although we have two objects, the static block is executed only once. This is because the static block is executed by default during the loading of the class.
+
