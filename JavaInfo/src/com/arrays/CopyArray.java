@@ -22,7 +22,7 @@ public class CopyArray {
 		System.out.println(arr2[i]+":"+arr1[i]);
 		}
 		
-		
+		//
 		
 		
 		
