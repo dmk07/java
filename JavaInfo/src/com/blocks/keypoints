@@ -1,0 +1,6 @@
+A static block in java can not be declared inside any method.
+
+2. JVM executes a static block on the highest priority basis when the dot class file is loaded into the memory.
+
+3. If the keyword “static” is missed before block then the block is called non-static block (instance block) that is executed when class is instantiated.
+    Thanks for reading!!!
