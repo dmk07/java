@@ -3,7 +3,7 @@ package com.arrays;
 public class CompareTwoArrays {
 
 	public static void main(String[] args) {
-
+//
 		int[] arr1 = { 10, 32, 43, 23, 12, 22, 44, 43, 534, 3 };
 		int[] arr2 = { 34, 12, 23, 44, 3, 234, 24, 22, 42, 22 };
 
