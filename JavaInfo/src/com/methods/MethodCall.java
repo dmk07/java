@@ -2,18 +2,19 @@ package com.methods;
 
 public class MethodCall {
 	
-	Hello hello=new Hello();
 
-	public void findelement(hello.name(String a))
+
+	public void findelement(Hello hello)
 	{
-		
+		System.out.print(hello);
 	}
 	
 
 	
 	
 	public static void main(String[] args) {
-		
+		MethodCall obj=new MethodCall();
+		obj.findelement(new Hello());
 
 	}
 

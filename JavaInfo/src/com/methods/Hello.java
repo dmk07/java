@@ -2,7 +2,7 @@ package com.methods;
 
 public  class Hello {
 	
-	public  static void name(String name)
+	public void name(String name)
 	{
 		
 	}
