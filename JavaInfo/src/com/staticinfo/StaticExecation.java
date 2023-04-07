@@ -10,7 +10,7 @@ public class StaticExecation {
 	}
 	
 	static int a=m1(); // static method is call first mentioned first
- int b=m1();
+	int b=m1();
 	
 	
 	public static int m1()
